@@ -1,26 +1,51 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Button,
+  TouchableOpacity
+} from "react-native";
+
+import { CATEGORIES } from "../data/dummy-data";
 
 const CategoriesScreen = props => {
-    console.log(props);
+  const renderGridItem = itemData => {
     return (
-        <View style={styles.screen}>
-            <Text>The Categories Screen!</Text>
-            <Button title='Go to Meals!' onPress={()=>{
-                props.navigation.navigate({routeName: 'CategoryMeals' });
-            }}/>
-            <Button title='Go Back' onPress={()=>{
-                props.navigation.goBack();
-            }}/>
+      <TouchableOpacity style={styles.gridItem} 
+        onPress={() => {
+          props.navigation.navigate();
+        }}
+      >
+        <View>
+          <Text>{itemData.item.title}</Text>
         </View>
-    )};
+      </TouchableOpacity>
+    );
+  };
+  console.log(props);
+  return (
+    <FlatList
+      keyExtractor={(item, index) => item.id}
+      data={CATEGORIES}
+      numColumns={2}
+      renderItem={renderGridItem}
+    />
+  );
+};
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
+  screen: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  gridItem: {
+    flex: 1,
+    margin: 15,
+    height: 150
+  }
 });
 
 export default CategoriesScreen;
