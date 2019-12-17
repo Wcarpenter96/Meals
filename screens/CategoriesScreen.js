@@ -9,7 +9,6 @@ import {
 } from "react-native";
 
 import { CATEGORIES } from "../data/dummy-data";
-import Colors from "../constants/Colors";
 
 const CategoriesScreen = props => {
   const renderGridItem = itemData => {
@@ -44,10 +43,7 @@ const CategoriesScreen = props => {
 
 CategoriesScreen.navigationOptions = {
   headerTitle: "Meal Categories",
-  headerStyle: {
-    backgroundColor: Colors.primaryColor
-  },
-  headerTintColor: "white"
+  
 };
 
 const styles = StyleSheet.create({
