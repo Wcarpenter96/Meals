@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
+import Meal from '../models/meal'
 
 const CategoryMealsScreen = props => {
 
