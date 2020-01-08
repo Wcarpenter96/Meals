@@ -7,7 +7,12 @@ const FiltersScreen = props => {
         <View style={styles.screen}>
             <Text>The Filters Screen!</Text>
         </View>
-    )};
+    )
+};
+    
+FiltersScreen.navigationOptions = {
+    headerTitle: 'Filter Meals'
+}
 
 const styles = StyleSheet.create({
     screen: {
