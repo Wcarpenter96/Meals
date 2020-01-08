@@ -17,6 +17,12 @@ const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: "white"
   },
+  headerTitleStyle: {
+    fontFamily: "open-sans-bold"
+  },
+  headerBackTitleStyle: {
+    fontFamily: "open-sans"
+  },
   headerTintColor: Colors.primaryColor
 };
 
@@ -49,7 +55,8 @@ const tabScreenConfig = {
         return (
           <Ionicons name="ios-restaurant" size={25} color={tabInfo.tintColor} />
         );
-      }
+      },
+      tabBarColor: Colors.primaryColor
     }
   },
   Favorites: {
@@ -59,12 +66,16 @@ const tabScreenConfig = {
       tabBarIcon: tabInfo => {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;
       }
-    }
+    },
+    tabBarColor: Colors.accentColor
   }
 };
 
 const MealsFavTabNavigator = createBottomTabNavigator(tabScreenConfig, {
   tabBarOptions: {
+    labelStyle: {
+      fontFamily: "open-sans-bold"
+    },
     activeTintColor: Colors.accentColor
   }
 });
@@ -78,21 +89,24 @@ const FiltersNavigator = createStackNavigator(
   }
 );
 
-const MainNavigator = createDrawerNavigator({
-  MealsFavs: {
-    screen: MealsFavTabNavigator,
-    navigationOptions: {
-      drawerLabel: "Meals"
-    }
+const MainNavigator = createDrawerNavigator(
+  {
+    MealsFavs: {
+      screen: MealsFavTabNavigator,
+      navigationOptions: {
+        drawerLabel: "Meals"
+      }
+    },
+    Filters: FiltersNavigator
   },
-  Filters: FiltersNavigator
-}, {
-  contentOptions: {
-    activeTintColor: Colors.accentColor,
-    labelStyle: {
-      fontFamily: 'open-sans-bold'
+  {
+    contentOptions: {
+      activeTintColor: Colors.accentColor,
+      labelStyle: {
+        fontFamily: "open-sans-bold"
+      }
     }
   }
-});
+);
 
 export default createAppContainer(MainNavigator);
